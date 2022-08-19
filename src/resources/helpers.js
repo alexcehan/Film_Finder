@@ -1,4 +1,5 @@
 
+let currentGeneratedMovie;
 
 // Populate dropdown menu with all the available genres
 const populateGenreDropdown = (genres) => {
@@ -24,10 +25,12 @@ const populateLikeMoviesList = (likedArray) => {
         let item = document.createElement("li");
         item.id = movie.id;
         item.value = movie.id;
-       // item.textContent = movie.title;
 
-        let poster = createMoviePoster(movie.poster_path);
-        item.innerHTML = `<img src="https://image.tmdb.org/t/p/original//${movie.poster_path}">`
+
+
+        item.innerHTML = `<div class="miniPoster"><img src="https://image.tmdb.org/t/p/original//${movie.poster_path}">
+                            <div class="miniPosterBottom"><img class="logoTmdb" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz9ORYhX9P-QVyWmMHddgiPtreEW3rVhAGWK3G1iJzD1QpU0QzmWYOc8A4ygB7hf_HSA&usqp=CAU">
+                            <div class="movieRating">${movie.vote_average}</div><div id="starRating"><i class="fa-regular fa-star"></i></div></div></div>`
 
         likedList.appendChild(item);
     }
@@ -71,6 +74,7 @@ const clearCurrentMovie = () => {
 
 // After liking a movie, clears the current movie from the screen and gets another random movie
 const likeMovie = () => {
+    likedMoviesArray.unshift(currentGeneratedMovie);
     clearLikedList();
     clearCurrentMovie();
     showRandomMovie();
@@ -81,6 +85,7 @@ const likeMovie = () => {
 
 // After disliking a movie, clears the current movie from the screen and gets another random movie
 const dislikeMovie = () => {
+    clearLikedList();
     clearCurrentMovie();
     showRandomMovie();
 }
@@ -132,6 +137,8 @@ const getRandomMovie = (movies) => {
   const randomMovie = movies[randomIndex];
   console.log(randomMovie);
 
+  currentGeneratedMovie=randomMovie;
+
   return randomMovie;
 }
 
@@ -142,12 +149,17 @@ const displayMovie = (movieInfo) => {
     const movieTextDiv = document.getElementById('movieText');
     const likeBtn = document.getElementById('likeBtn');
     const dislikeBtn = document.getElementById('dislikeBtn');
+    console.log("this is movieInfo: " + movieInfo);
 
 
     // Create HTML content containing movie info
     const moviePoster = createMoviePoster(movieInfo.poster_path);
     const titleHeader = createMovieTitle(movieInfo.title);
-    const overviewText = createMovieOverview(movieInfo.overview+ '/n' + movieInfo.release_date);
+    const overviewText = createMovieOverview(movieInfo.overview);
+
+    //get info for creating movie object to be added to liked movies list
+    const movieId = movieInfo.id;
+    console.log(movieId);
 
 
 
@@ -166,24 +178,3 @@ const displayMovie = (movieInfo) => {
 
 }
 
-const displayMovieInList = (movieInfo) => {
-    const moviePosterDiv = document.getElementById('moviePoster');
-
-
-
-
-    // Create HTML content containing movie info
-    const moviePoster = createMoviePoster(movieInfo.poster_path);
-  // const titleHeader = createMovieTitle(movieInfo.title);
-
-
-
-
-    // Append title, poster, and overview to page
-
-    moviePosterDiv.appendChild(moviePoster);
-   // movieTextDiv.appendChild(titleHeader);
-
-
-
-}

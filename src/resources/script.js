@@ -26,6 +26,7 @@ const getGenres = async () => {
 }
 
 //get a list of movies
+//modify this method to get a random page number
 const getMovies = async () => {
     const selectedGenre = getSelectedGenre();
     const discoverMoviesEndpoint = '/discover/movie';
@@ -76,7 +77,7 @@ const showRandomMovie =async () => {
 
     const movies = await getMovies();
     const randomMovie = getRandomMovie(movies);
-    likedMoviesArray.push(randomMovie);
+
     const info = await getMovieInfo(randomMovie);
     displayMovie(info);
     console.log(likedMoviesArray);
