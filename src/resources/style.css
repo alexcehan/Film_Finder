@@ -124,16 +124,17 @@ img#moviePoster {
 #likedMovies {
 
     list-style-type: none;
-
     padding: 0;
-    overflow: auto;
     display: inline-flex;
     float: left;
+    max-width: 95vw;
+    overflow-x: auto;
 
 }
 
 #likeMoviesList {
 
+   
 }
 
 li {
@@ -182,6 +183,7 @@ li img {
     display: flex;
     width: 164px;
     padding-left: 16px;
+    padding-right: 16px;
 
 }
 
@@ -195,6 +197,8 @@ li img {
     text-align: right;
     font-family: Guttman-Aharoni, sans-serif;
 }
+
+
 
 
 
