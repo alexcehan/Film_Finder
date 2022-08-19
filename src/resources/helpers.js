@@ -128,14 +128,31 @@ const createMovieOverview = (overview) => {
 
   return overviewParagraph;
 }
-
+//check if a movie was listed already
+const movieWasListedBefore = (movie) => {
+    for(let idValue of listedMovies) {
+        if(movie.id === idValue) {
+            return true;
+        }
+    }
+    return false;
+}
 
 // Returns a random movie from the first page of movies
 const getRandomMovie = (movies) => {
-  const randomIndex = Math.floor(Math.random() * movies.length);
-  console.log(movies);
-  const randomMovie = movies[randomIndex];
-  console.log(randomMovie);
+
+  let randomMovie;
+
+  while(true) {
+      const randomIndex = Math.floor(Math.random() * movies.length);
+      console.log(movies);
+      randomMovie = movies[randomIndex];
+      console.log(randomMovie);
+      if(!movieWasListedBefore(randomMovie) && randomMovie.vote_average >= 6) {
+          break;
+      }
+  }
+
 
   currentGeneratedMovie=randomMovie;
 

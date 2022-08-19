@@ -3,6 +3,7 @@ const tmdbBaseUrl = 'https://api.themoviedb.org/3';
 const playBtn = document.getElementById('playBtn');
 
 const likedMoviesArray = [];
+const listedMovies = [];
 
 //get a list of all available genres
 const getGenres = async () => {
@@ -29,8 +30,9 @@ const getGenres = async () => {
 //modify this method to get a random page number
 const getMovies = async () => {
     const selectedGenre = getSelectedGenre();
+    const page = '&page=' + Math.floor(Math.random() * 500);
     const discoverMoviesEndpoint = '/discover/movie';
-    const requestParam = '?api_key=' + tmdbKey + '&with_genres=' + selectedGenre;
+    const requestParam = '?api_key=' + tmdbKey + '&with_genres=' + selectedGenre + page;
     const urlToFetch = tmdbBaseUrl + discoverMoviesEndpoint + requestParam;
 
     try {
@@ -80,7 +82,8 @@ const showRandomMovie =async () => {
 
     const info = await getMovieInfo(randomMovie);
     displayMovie(info);
-    console.log(likedMoviesArray);
+    listedMovies.push(randomMovie.id);
+    console.log(listedMovies);
 
 }
 
