@@ -8,8 +8,9 @@ body {
     text-align: center;
     margin: 40px auto;
     display: block;
-    font-family: 'Staatliches', sans-serif;
-    font-size: 80px;
+    font-family: 'Rubik Dirt', sans-serif;
+    font-size: 70px;
+    width: 100%;
 }
 
 #genreForm, #playBtn {
@@ -64,12 +65,12 @@ select {
     display: inline-block;
 }
 
-#starRating{
-    width: 95%;
+.starRating{
+    width: 20%;
     height: 30px;
     font-size: 25px ;
     color: #99820e;
-    background-color: white;
+
 }
 
 #likeBtn {
@@ -89,7 +90,7 @@ img#moviePoster {
     margin:  auto;
 }
 
-movieText {
+#movieText {
     font-family: 'Questrial', sans-serif;
     color: #FEFBEA;
     line-height: 1.25;
@@ -98,7 +99,7 @@ movieText {
 
 
 #movieInfo {
-    width: 65%;
+    width: 70%;
     margin: 32px auto;
 }
 #movieInfo:after {
@@ -112,6 +113,10 @@ movieText {
 
     float: left;
 
+}
+
+#movieText {
+    width: 70%;
 }
 
 img#moviePoster {
@@ -131,6 +136,35 @@ img#moviePoster {
     overflow-x: auto;
 
 }
+
+#titleAndRating {
+    display: inline-flex;
+    width: 100%;
+
+}
+
+#movieTitle {
+    width: 70%;
+    padding: 0;
+    padding-left: 32px;
+    margin: 0;
+    font-size: 25px;
+
+}
+
+#ratingHeader {
+    list-style-type: none;
+    display: inline-flex;
+    float: none;
+    color: #00030a;
+    width: 30%;
+    margin: 0;
+    padding: initial;
+    font-size: 32px;
+
+}
+
+
 
 #likeMoviesList {
 
@@ -182,20 +216,39 @@ li img {
 .miniPosterBottom {
     display: flex;
     width: 164px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0 16px;
+    background-color: white;
+
 
 }
 
 .movieRating {
     padding-left: 10px;
-    width: 35%;
+    width: 25%;
     height: 30px;
     font-size: 25px;
     float: right;
-    background-color: white;
     text-align: right;
-    font-family: Guttman-Aharoni, sans-serif;
+    font-family: 'Questrial', sans-serif;
+    padding-top: 0px;
+}
+
+hr {
+    margin-top: 50px;
+    border: 3px #65afd7;
+    border-style: revert;
+    border-radius: 3px;
+}
+
+h2 {
+    font-size: 25px;
+    margin-left: 20px;
+    font-family: 'Questrial', sans-serif;
+    color: #FEFBEA;
+    line-height: 1.25;
+
 }
 
 

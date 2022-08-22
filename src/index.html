@@ -9,6 +9,7 @@
 
 
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400&family=Fredoka+One&family=Questrial&family=Staatliches&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,300&family=Rubik+Dirt&display=swap" rel="stylesheet">
 
     <script defer src="https://kit.fontawesome.com/8b01a05d6a.js" crossorigin="anonymous"></script>
 
@@ -18,7 +19,7 @@
 </head>
 <body>
     <header>
-        <h1 id="appTitle">🍿 Film Finder 🍿</h1>
+        <h1 id="appTitle">🎞️ Movie Recommendation🎞️</h1>
     </header>
     <form id="genreForm">
         <label>Choose a genre:</label>
@@ -36,12 +37,16 @@
         <div id="likeBtn"><i class="fa-solid fa-thumbs-up"></i></div>
         <div id="dislikeBtn"><i class="fa-solid fa-thumbs-down"></i></div>
     </div>
+    <hr id="horizontalBar" hidden>
 
-    <div id="likedMovies">
-        <ul id="likeMoviesList">
+    <div id="likeMoviesList" hidden>
+        <h2>Liked Movies</h2>
+        <ul id="likedMovies">
 
         </ul>
     </div>
+
+
 
 </body>
 </html>

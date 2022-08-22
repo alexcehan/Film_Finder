@@ -83,6 +83,7 @@ const showRandomMovie =async () => {
     const info = await getMovieInfo(randomMovie);
     displayMovie(info);
     listedMovies.push(randomMovie.id);
+    showLikedList();
     console.log(listedMovies);
 
 }

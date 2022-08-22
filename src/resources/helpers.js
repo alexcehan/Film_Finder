@@ -14,12 +14,21 @@ const populateGenreDropdown = (genres) => {
   }
 }
 
-
+//show liked movies list
+const showLikedList = () => {
+    const likeMoviesList = document.getElementById("likeMoviesList");
+    const hr = document.getElementById("horizontalBar")
+    if(likedMoviesArray.length > 0) {
+        likeMoviesList.removeAttribute('hidden');
+        hr.removeAttribute('hidden');
+    }
+}
 
 //populate list with liked movies
 
 const populateLikeMoviesList = (likedArray) => {
     const likedList = document.getElementById("likedMovies");
+
 
     for(const movie of likedArray) {
         let item = document.createElement("li");
@@ -30,7 +39,7 @@ const populateLikeMoviesList = (likedArray) => {
 
         item.innerHTML = `<div class="miniPoster"><img src="https://image.tmdb.org/t/p/original//${movie.poster_path}">
                             <div class="miniPosterBottom"><img class="logoTmdb" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz9ORYhX9P-QVyWmMHddgiPtreEW3rVhAGWK3G1iJzD1QpU0QzmWYOc8A4ygB7hf_HSA&usqp=CAU">
-                            <div class="movieRating">${movie.vote_average}</div><div id="starRating"><i class="fa-regular fa-star"></i></div></div></div>`
+                            <div class="movieRating">${movie.vote_average}</div><div class="starRating"><i class="fa-regular fa-star"></i></div></div></div>`
 
         likedList.appendChild(item);
     }
@@ -109,12 +118,23 @@ const createMoviePoster = (posterPath) => {
 
 // Create HTML for movie title
 
-const createMovieTitle = (title) => {
+const createMovieTitle = (title, rating) => {
+  const titleAndRating = document.createElement('div');
+  titleAndRating.setAttribute('id', 'titleAndRating');
+
   const titleHeader = document.createElement('h1');
   titleHeader.setAttribute('id', 'movieTitle');
   titleHeader.innerHTML=title;
 
-  return titleHeader;
+  const ratingHeader = document.createElement('h1');
+  ratingHeader.setAttribute('id', 'ratingHeader');
+  ratingHeader.innerHTML=`<div class="movieRating">${rating.toFixed(1)}</div><div class="starRating"><i class="fa-regular fa-star"></i></div>`;
+
+  titleAndRating.appendChild(titleHeader);
+  titleAndRating.appendChild(ratingHeader)
+
+
+  return titleAndRating;
 
 }
 
@@ -171,7 +191,7 @@ const displayMovie = (movieInfo) => {
 
     // Create HTML content containing movie info
     const moviePoster = createMoviePoster(movieInfo.poster_path);
-    const titleHeader = createMovieTitle(movieInfo.title);
+    const titleHeader = createMovieTitle(movieInfo.title, movieInfo.vote_average);
     const overviewText = createMovieOverview(movieInfo.overview);
 
     //get info for creating movie object to be added to liked movies list
